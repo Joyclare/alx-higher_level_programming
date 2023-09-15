@@ -1,23 +1,20 @@
 #!/usr/bin/python3
-"""Definition of a State and an instance Base
-"""
+"""python file that contains the class definition of
+a State and an instance Base = declarative_base()"""
+
+from enum import unique
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Table, Column, Integer, ForeignKey
-from sqlalchemy.orm import relationship
+
+Base = declarative_base()
 
 Base = declarative_base()
 
 
-class City(Base):
-    """Inherits from Base
+class State(Base):
+    """Class State"""
 
-    Args:
-        Base (class): inherits from Base
-    """
-    __tablename__ = 'cities'
-    id = Column(Integer, primary_key=True, nullable=False,
-                unique=True, autoincrement=True)
+    __tablename__ = 'states'
+    id = Column(Integer, autoincrement=True,
+                primary_key=True, nullable=False, unique=True)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, nullable=False,
-                      foreign_keys='states.id')
